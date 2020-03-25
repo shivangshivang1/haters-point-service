@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
@@ -20,12 +22,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer signUp(User user) {
 
-        UserEntity userEntity = UserMapper.convertUserDtoToUserEntity(user);
-        UserEntity isUserSaved = userRepository.save(userEntity);
-        if(!ObjectUtils.isEmpty(isUserSaved)){
-            return 200;
+        List<UserEntity> userEntities = userRepository.findByEmailId(user.getEmailId());
+        if (userEntities.size() == 0) {
+            UserEntity userEntity = UserMapper.convertUserDtoToUserEntity(user);
+            UserEntity isUserSaved = userRepository.save(userEntity);
+            if (!ObjectUtils.isEmpty(isUserSaved)) {
+                return 200;
+            }
         }
-
         return 0;
     }
 
