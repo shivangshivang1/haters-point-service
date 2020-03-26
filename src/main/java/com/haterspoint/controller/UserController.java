@@ -39,10 +39,10 @@ public class UserController {
             return new ResponseEntity<Integer>(responseCode, HttpStatus.OK);
         }
         else if(responseCode == 206){
-            return new ResponseEntity<Integer>(responseCode, HttpStatus.OK);
+            return new ResponseEntity<Integer>(responseCode, HttpStatus.PARTIAL_CONTENT);
         }
         else {
-            return new ResponseEntity<Integer>(responseCode, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Integer>(responseCode, HttpStatus.NO_CONTENT);
         }
     }
 
