@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService {
         List<UserEntity> userEntities = userRepository.findAll();
 
         for(UserEntity a : userEntities){
-            if(a.getEmailId().toString().equals(user.getEmailId())){
-                if(a.getPassword().toString().compareTo(user.getPassword())== 0){
+            if(a.getEmailId().equals(user.getEmailId())){
+                if(a.getPassword().compareTo(user.getPassword())== 0){
                             return 200;
                 }else{
                     return 206;
