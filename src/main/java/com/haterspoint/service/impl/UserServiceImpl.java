@@ -32,4 +32,11 @@ public class UserServiceImpl implements UserService {
         return 0;
     }
 
+    @Override
+    public Integer login(User user) {
+        List<UserEntity> userEntities = userRepository.findByEmailId(user.getEmailId());
+        List<UserEntity>  userEntities1 = userRepository.findByPassword(user.getPassword());
+        
+    }
+
 }
