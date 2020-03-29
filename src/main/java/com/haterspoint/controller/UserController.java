@@ -43,7 +43,7 @@ public class UserController {
            return new ResponseEntity<Integer>(responseCode, HttpStatus.PARTIAL_CONTENT);
        }
        else{
-           //email id not present in the database
+
            return new ResponseEntity<Integer>(responseCode,HttpStatus.NO_CONTENT);
        }
 
