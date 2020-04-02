@@ -22,17 +22,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer signUp(User user) {
 
-//        UserEntity userEntity = UserMapper.convertUserDtoToUserEntity(user);
-//        UserEntity isUserSaved = userRepository.save(userEntity);
-//        if(!ObjectUtils.isEmpty(isUserSaved)){
-//            return 200;
-//        }
-
         List<UserEntity> userEntities = userRepository.findByEmailId(user.getEmailId());
-        if(userEntities.size()== 0){
+        if (userEntities.size() == 0) {
             UserEntity userEntity = UserMapper.convertUserDtoToUserEntity(user);
             UserEntity isUserSaved = userRepository.save(userEntity);
-            if(!ObjectUtils.isEmpty(isUserSaved)){
+            if (!ObjectUtils.isEmpty(isUserSaved)) {
                 return 200;
             }
         }
