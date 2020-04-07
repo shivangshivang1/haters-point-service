@@ -7,12 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -27,7 +29,7 @@ public class UserController {
             return new ResponseEntity<Integer>(responseCode, HttpStatus.OK);
 
         }
-        return  new ResponseEntity<Integer>(responseCode,HttpStatus.INTERNAL_SERVER_ERROR);
+        return  new ResponseEntity<Integer>(responseCode,HttpStatus.OK);
 
     }
 
