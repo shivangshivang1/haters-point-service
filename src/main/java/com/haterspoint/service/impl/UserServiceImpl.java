@@ -36,9 +36,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer logIn(User user) {
         //List<UserEntity> userEntitie = userRepository.findByEmailId(user.getEmailId());
-        List<UserEntity> userEntities = userRepository.findAll();
+        //List<UserEntity> userEntities = userRepository.findAll();
 
-        for(UserEntity a : userEntities){
+        for(UserEntity a : userRepository.findAll()){
             if(a.getEmailId().equals(user.getEmailId())){
                 if(a.getPassword().compareTo(user.getPassword())== 0){
                             return 200;
