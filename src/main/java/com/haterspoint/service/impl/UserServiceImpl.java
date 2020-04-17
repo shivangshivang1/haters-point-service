@@ -7,6 +7,7 @@ import com.haterspoint.repository.UserRepository;
 import com.haterspoint.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -22,13 +23,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer signUp(User user) {
 
-        List<UserEntity> userEntities = userRepository.findByEmailId(user.getEmailId());
-        if (userEntities.size() == 0) {
-            UserEntity userEntity = UserMapper.convertUserDtoToUserEntity(user);
-            UserEntity isUserSaved = userRepository.save(userEntity);
+        UserEntity userEntity = userRepository.findByEmailId(user.getEmailId());
+        if (userEntity == null) {
+            UserEntity newUserEntity = UserMapper.convertUserDtoToUserEntity(user);
+            UserEntity isUserSaved = userRepository.save(newUserEntity);
             if (!ObjectUtils.isEmpty(isUserSaved)) {
                 return 200;
             }
+        }
+        else{
+            return 206;
         }
         return 0;
     }
