@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity,Serializable> {
     List<UserEntity> findByEmailId(String emailId);
-
-
+    List<UserEntity> findByPassword(String password);
 }
