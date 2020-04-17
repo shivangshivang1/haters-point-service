@@ -2,8 +2,11 @@ package com.haterspoint.mapper;
 
 import com.haterspoint.dto.User;
 import com.haterspoint.entity.UserEntity;
+import com.haterspoint.util.Utility;
 
 public class UserMapper {
+
+
 
     public static UserEntity convertUserDtoToUserEntity(User user) {
 
@@ -11,6 +14,7 @@ public class UserMapper {
                 .mobileNumber(user.getMobileNumber())
                 .password(user.getPassword())
                 .role("user")
+                .generics(Utility.getCreateGenericDetails(user.getEmailId()))
                 .build();
 
     }

@@ -29,6 +29,9 @@ public class UserController {
             return new ResponseEntity<Integer>(responseCode, HttpStatus.OK);
 
         }
+        else if ( responseCode == 206){
+            return new ResponseEntity<Integer>(responseCode,HttpStatus.NO_CONTENT);
+        }
         return  new ResponseEntity<Integer>(responseCode,HttpStatus.OK);
 
     }
