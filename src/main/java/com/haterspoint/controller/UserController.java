@@ -31,4 +31,30 @@ public class UserController {
 
     }
 
+    @PostMapping(value = "/login")
+    public ResponseEntity<Integer> userLogin(@RequestBody User user){
+
+        log.info("user controller{}");
+        int responseCode = userService.login(user);
+       if(responseCode == 200) {
+           return new ResponseEntity<Integer>(responseCode, HttpStatus.OK);
+       }
+       else if(responseCode==206) {
+           return new ResponseEntity<Integer>(responseCode, HttpStatus.PARTIAL_CONTENT);
+       }
+       else{
+
+           return new ResponseEntity<Integer>(responseCode,HttpStatus.NO_CONTENT);
+       }
+
+
+
+
+
+
+
+    }
+
+
+
 }
