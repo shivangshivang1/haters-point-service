@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
       private String name;
       private int noOfDislikes;
       private int noOfAngry;
-      private int noOfFrustrations;
+      private int noOFFrustrations;
 
 
   }
