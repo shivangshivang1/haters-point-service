@@ -38,11 +38,11 @@ public class Product {
     private UserEntity user;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reaction")
+    @JoinColumn(name = "product")
     private Set<Reaction> reactions;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name= "comment")
+    @JoinColumn(name= "product")
     private Set<Comment> comments;
 
 

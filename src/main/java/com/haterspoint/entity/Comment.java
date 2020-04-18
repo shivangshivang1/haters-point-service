@@ -31,7 +31,7 @@ public class Comment {
     private UserEntity user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product", nullable = false)
     private Product product;
 
 
