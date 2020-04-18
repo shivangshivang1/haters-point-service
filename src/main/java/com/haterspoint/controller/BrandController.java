@@ -17,6 +17,7 @@ import java.util.List;
 @CrossOrigin
 public class BrandController {
 
+
             @Autowired
    BrandService brandService;
 

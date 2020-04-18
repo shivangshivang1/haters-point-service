@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.io.Serializable;
 import java.util.List;
 @Repository
+
+
+
 public interface UserRepository extends JpaRepository<UserEntity,Serializable> {
-    List<UserEntity> findByEmailId(String emailId);
+
+   UserEntity findByEmailId(String emailId);
 
 }
