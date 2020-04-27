@@ -62,10 +62,10 @@ public class BrandServiceImpl implements BrandService {
                              break;
             case("hate"): brand.setNoOfHate(brand.getNoOfHate()+1);
                             break;
-            case ("angry"): brand.setNoOfAngry(brand.getNoOfAngry()+1);
+            case("angry"): brand.setNoOfAngry(brand.getNoOfAngry()+1);
                             break;
-
-            default: brand.setNoOFFrustrations(brand.getNoOFFrustrations() + 1);
+            case("frustration"): brand.setNoOFFrustrations(brand.getNoOFFrustrations() + 1);
+                                    break;
         }
 
 
