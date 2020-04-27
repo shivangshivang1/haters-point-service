@@ -44,16 +44,15 @@ public class BrandServiceImpl implements BrandService {
 
 
         for (Reaction reaction : product.getReactions()){
-
             setReactionsNumbers(reaction, brand);
-            totalHateScore = (((brand.getNoOfDislikes() * dislikePoint)
-                    +(brand.getNoOfHate()* hatePoint)
-                    +(brand.getNoOfAngry() * angryPoint)
-                    +(brand.getNoOFFrustrations() * frustrationPoint) )
-                    /brand.getNoOfDislikes() + brand.getNoOfHate()
-                    +brand.getNoOfAngry() + brand.getNoOFFrustrations()) * correctionFactor;
-
         }
+        totalHateScore += (((brand.getNoOfDislikes() * dislikePoint)
+                +(brand.getNoOfHate()* hatePoint)
+                +(brand.getNoOfAngry() * angryPoint)
+                +(brand.getNoOFFrustrations() * frustrationPoint) )
+                /brand.getNoOfDislikes() + brand.getNoOfHate()
+                +brand.getNoOfAngry() + brand.getNoOFFrustrations()) * correctionFactor;
+
         return totalHateScore;
     }
     private void setReactionsNumbers( Reaction reaction, Brand brand){
