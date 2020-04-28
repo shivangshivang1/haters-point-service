@@ -42,7 +42,7 @@ public class UserEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(unique = true, name = "user")
-    private Set<Product> products;
+    private Set<Brand> brands;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(unique = true, name = "user")

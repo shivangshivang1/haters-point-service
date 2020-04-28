@@ -4,7 +4,6 @@ package com.haterspoint.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Builder
@@ -24,13 +23,12 @@ public class Reaction {
     private String reaction;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product", nullable = false)
-    private Product product;
+    @JoinColumn(name = "brand", nullable = false)
+    private Brand brand;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user",nullable = false)
+    @JoinColumn(name = "user", nullable = false)
     private UserEntity user;
-
 
 
     @Embedded

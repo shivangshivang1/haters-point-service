@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Brand {
+public class BrandDTO {
 
     private int id;
     private String name;
