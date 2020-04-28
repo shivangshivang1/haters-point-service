@@ -6,7 +6,5 @@ import java.util.List;
 
 public interface BrandService {
 
-
-
     List<Brand> getBrands();
 }

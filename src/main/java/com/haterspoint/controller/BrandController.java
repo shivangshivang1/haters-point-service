@@ -1,7 +1,6 @@
 package com.haterspoint.controller;
 
 
-
 import com.haterspoint.dto.Brand;
 import com.haterspoint.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,34 +16,17 @@ import java.util.List;
 @CrossOrigin
 public class BrandController {
 
+    @Autowired
+    BrandService brandService;
 
-            @Autowired
-   BrandService brandService;
 
-
-            @GetMapping(value = "/getBrands")
+    @GetMapping(value = "/getBrands")
     public ResponseEntity<List<Brand>> getBrands(){
 
-                           List<Brand>  brands = brandService.getBrands();
+        List<Brand>  brands = brandService.getBrands();
 
-                           return new ResponseEntity<List<Brand>>(brands, HttpStatus.OK);
+        return new ResponseEntity<List<Brand>>(brands, HttpStatus.OK);
 
-                     }
+    }
 
-       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

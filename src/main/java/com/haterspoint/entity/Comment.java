@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @Setter
 @Getter
-@Table(name="comments")
+@Table(name = "comments")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Comment {
@@ -20,10 +20,8 @@ public class Comment {
     private int id;
 
 
-
     @Column(name = "comment")
     private String comment;
-
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,8 +29,8 @@ public class Comment {
     private UserEntity user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product", nullable = false)
-    private Product product;
+    @JoinColumn(name = "brand", nullable = false)
+    private Brand brand;
 
 
     @Embedded
