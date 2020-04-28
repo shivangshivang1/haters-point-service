@@ -1,7 +1,7 @@
 package com.haterspoint.service.impl;
 
 
-import com.haterspoint.dto.Brand;
+import com.haterspoint.dto.BrandDTO;
 import com.haterspoint.service.BrandService;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,12 @@ import java.util.List;
 @Service
 public class BrandServiceImpl implements BrandService {
     @Override
-    public List<Brand> getBrands() {
+    public List<BrandDTO> getBrands() {
 
-        List<Brand> brands = new ArrayList<>();
+        List<BrandDTO> brands = new ArrayList<>();
 
         for (int i = 0; i < 40; i++) {
-            Brand brand = new Brand();
+            BrandDTO brand = new BrandDTO();
 
             brand.setId(i);
             brand.setName("brand" + i);
