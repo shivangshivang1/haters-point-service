@@ -10,11 +10,10 @@ import java.util.Set;
 @Builder
 @Setter
 @Getter
-@Table(name="product")
+@Table(name = "brand")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
-
+public class Brand {
 
 
     @Id
@@ -32,19 +31,23 @@ public class Product {
     @Column(name = "imageURL")
     private String imageURL;
 
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "sub_category")
+    private String subCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user", nullable = false)
     private UserEntity user;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product")
+    @JoinColumn(name = "brand")
     private Set<Reaction> reactions;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name= "product")
+    @JoinColumn(name = "brand")
     private Set<Comment> comments;
-
 
 
     @Embedded
