@@ -42,15 +42,15 @@ public class BrandServiceImpl implements BrandService {
         double correctionFactor = 2.5;
 
         int noOfDislikes = reactionRepository.findByReactionAndBrand(ReactionEnum.DISLIKE.toString(), brand.getId()).size();
-        int noOfHate = reactionRepository.findByReactionAndBrand(ReactionEnum.HATE.toString(), brand.getId()).size();
-        int noOfAngry = reactionRepository.findByReactionAndBrand(ReactionEnum.ANGRY.toString(), brand.getId()).size();
+        int noOfHates = reactionRepository.findByReactionAndBrand(ReactionEnum.HATE.toString(), brand.getId()).size();
+        int noOfAngries = reactionRepository.findByReactionAndBrand(ReactionEnum.ANGRY.toString(), brand.getId()).size();
         int noOfFrustrations = reactionRepository.findByReactionAndBrand(ReactionEnum.FRUSTRATION.toString(), brand.getId()).size();
 
         double HateScore = (((noOfDislikes * 1)
-                +(noOfHate * 2)
-                +(noOfAngry * 3)
+                +(noOfHates * 2)
+                +(noOfAngries * 3)
                 +(noOfFrustrations * 4) )
-                /noOfDislikes + noOfHate + noOfAngry + noOfFrustrations)
+                /noOfDislikes + noOfHates + noOfAngries + noOfFrustrations)
                 * correctionFactor;
 
         return Double.parseDouble(dec.format(HateScore));
