@@ -1,15 +1,22 @@
 package com.haterspoint.service.impl;
 
-
 import com.haterspoint.dto.BrandDTO;
+import com.haterspoint.entity.Brand;
+import com.haterspoint.enums.ReactionEnum;
+import com.haterspoint.repository.ReactionRepository;
 import com.haterspoint.service.BrandService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class BrandServiceImpl implements BrandService {
+
+    @Autowired
+    ReactionRepository reactionRepository;
     @Override
     public List<BrandDTO> getBrands() {
 
@@ -28,40 +35,25 @@ public class BrandServiceImpl implements BrandService {
         }
         return brands;
     }
-    private double getHateScore(Product product, Brand brand) {
+
+    private double getHateScore(Brand brand) {
+
+        DecimalFormat dec = new DecimalFormat("#0.00");
         double correctionFactor = 2.5;
-        int dislikePoint = 1;
-        int hatePoint = 2;
-        int angryPoint = 3;
-        int frustrationPoint = 4;
-        double totalHateScore = 0;
 
+        int noOfDislikes = reactionRepository.findByReactionAndBrand(ReactionEnum.DISLIKE.toString(), brand.getId()).size();
+        int noOfHate = reactionRepository.findByReactionAndBrand(ReactionEnum.HATE.toString(), brand.getId()).size();
+        int noOfAngry = reactionRepository.findByReactionAndBrand(ReactionEnum.ANGRY.toString(), brand.getId()).size();
+        int noOfFrustrations = reactionRepository.findByReactionAndBrand(ReactionEnum.FRUSTRATION.toString(), brand.getId()).size();
 
-        for (Reaction reaction : product.getReactions()){
-            setReactionsNumbers(reaction, brand);
-        }
-        totalHateScore += (((brand.getNoOfDislikes() * dislikePoint)
-                +(brand.getNoOfHate()* hatePoint)
-                +(brand.getNoOfAngry() * angryPoint)
-                +(brand.getNoOFFrustrations() * frustrationPoint) )
-                /brand.getNoOfDislikes() + brand.getNoOfHate()
-                +brand.getNoOfAngry() + brand.getNoOFFrustrations()) * correctionFactor;
+        double HateScore = (((noOfDislikes * 1)
+                +(noOfHate * 2)
+                +(noOfAngry * 3)
+                +(noOfFrustrations * 4) )
+                /noOfDislikes + noOfHate + noOfAngry + noOfFrustrations)
+                * correctionFactor;
 
-        return totalHateScore;
+        return Double.parseDouble(dec.format(HateScore));
     }
-    private void setReactionsNumbers( Reaction reaction, Brand brand){
 
-        switch( reaction.getReaction()){
-            case("dislike"): brand.setNoOfDislikes(brand.getNoOfHate()+1);
-                break;
-            case("hate"): brand.setNoOfHate(brand.getNoOfHate()+1);
-                break;
-            case("angry"): brand.setNoOfAngry(brand.getNoOfAngry()+1);
-                break;
-            case("frustration"): brand.setNoOFFrustrations(brand.getNoOFFrustrations() + 1);
-                break;
-        }
-
-
-    }
 }
