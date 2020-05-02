@@ -11,6 +11,7 @@ public class BrandDTO {
     private int id;
     private String name;
     private int noOfDislikes;
+    private int noOfHate;
     private int noOfAngry;
     private int noOFFrustrations;
 

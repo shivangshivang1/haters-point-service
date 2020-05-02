@@ -1,7 +1,6 @@
 package com.haterspoint.service.impl;
 
 
-//mport com.haterspoint.dto.Brand;
 import com.haterspoint.dto.BrandDTO;
 import com.haterspoint.service.BrandService;
 import org.springframework.stereotype.Service;
