@@ -1,0 +1,34 @@
+# This is a sample build configuration for Java (Maven).
+# Check our guides at https://confluence.atlassian.com/x/zd-5Mw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: maven:3.6.1
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - maven
+        artifacts:
+          - target/haters-point-service-0.0.1-SNAPSHOT.jar
+        script: # Modify the commands below to build your repository.
+          - mvn -B verify # -B batch mode makes Maven less verbose
+          - pipe: atlassian/aws-elasticbeanstalk-deploy:0.6.0
+            variables:
+              AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+              AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+              AWS_DEFAULT_REGION: 'ap-south-1'
+              S3_BUCKET: 'elasticbeanstalk-ap-south-1-187769582934'
+              LOCAL_PATH: 'artifact'
+              ENVIRONMENT_NAME: 'HateosService-env'
+              ZIP_FILE: 'target/haters-point-service-0.0.1-SNAPSHOT.jar'
+              APPLICATION_NAME: 'haters-point-service'
+              #S3_BUCKET: arn:aws:s3:::aws-deploy-test-har
+              # VERSION_LABEL: '<string>' # Optional.
+              # DESCRIPTION: '<string>' # Optional.
+              # WAIT: '<boolean>' # Optional.
+              # WAIT_INTERVAL: '<integer>' # Optional.
+              # COMMAND: '<string>' # Optional.
+              # DEBUG: '<boolean>' # Optional.
+
