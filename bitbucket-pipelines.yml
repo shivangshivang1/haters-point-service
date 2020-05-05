@@ -23,7 +23,7 @@ pipelines:
               LOCAL_PATH: 'artifact'
               ENVIRONMENT_NAME: 'HateosService-env'
               ZIP_FILE: 'target/haters-point-service-0.0.1-SNAPSHOT.jar'
-              APPLICATION_NAME: 'haters-point-service'
+              APPLICATION_NAME: 'hateos-service'
               #S3_BUCKET: arn:aws:s3:::aws-deploy-test-har
               # VERSION_LABEL: '<string>' # Optional.
               # DESCRIPTION: '<string>' # Optional.
