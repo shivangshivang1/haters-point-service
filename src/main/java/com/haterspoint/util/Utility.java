@@ -21,7 +21,7 @@ public class Utility {
 
     private static String getCurrentTime(){
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss dd-mmm-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss dd-MM-yyyy");
         String dateStr = dateFormat.format(date);
         return dateStr;
 
