@@ -11,4 +11,5 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<UserEntity,Serializable> {
 
    UserEntity findByEmailId(String emailId);
+   UserEntity findById(int id);
 }
